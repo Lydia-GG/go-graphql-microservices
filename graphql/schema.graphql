@@ -1,0 +1,21 @@
+scalar Time
+
+type Account {
+    id: String!
+    name: String!
+    orders: [order!]!
+}
+
+type Product {
+    id: String!
+    name: String!
+    description: String!
+    price: Float!
+}
+
+type Order {
+    id: String!
+    createdAt: Time!
+    totalPrice: Float!
+    products: [orderedProdutc]!
+}
