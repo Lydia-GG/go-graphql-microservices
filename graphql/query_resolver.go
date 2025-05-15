@@ -1,4 +1,4 @@
+package main
+// Accounts
 
-Accounts
-
-Products
+// Products

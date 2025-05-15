@@ -3,7 +3,7 @@ scalar Time
 type Account {
     id: String!
     name: String!
-    orders: [order!]!
+    orders: [Order!]!
 }
 
 type Product {
@@ -17,9 +17,9 @@ type Order {
     id: String!
     createdAt: Time!
     totalPrice: Float!
-    products: [orderedProdutc]!
+    products: [orderedProdut]!
 }
-type orderedProdutc {
+type orderedProdut {
     id: String!
     name: String!
     description: String!
@@ -27,11 +27,38 @@ type orderedProdutc {
     quantity: Int!
 }
 
-intput PaginationInput {
+input PaginationInput {
     skip: Int
     take: Int
 }
 
-intput AccountInput {
-    
+input AccountInput {
+    name: String!
+}
+
+input ProductInput{
+    name: String!
+    description: String!
+    price: Float!
+}
+
+input OrderInput {
+    accountId: String!
+    products: [orderedProdutInput!]!
+}
+
+input orderedProdutInput {
+    id: Int!
+    quantity: Int!
+}
+
+type Mutation {
+    createAcount(account: AccountInput!): Account
+    createProduct(product: ProductInput!): Product
+    createOrder(order: OrderInput!): Order
+}
+
+type Query {
+    accounts(pagination: PaginationInput!, id: String!): [Account!]!
+    products(pagination: PaginationInput!, query: String, id: String): [Product!]!
 }
